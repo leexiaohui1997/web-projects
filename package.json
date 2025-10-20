@@ -1,0 +1,68 @@
+{
+  "name": "projects",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "ts-node scripts/dev.ts",
+    "build": "tsc && ts-node scripts/build.ts",
+    "preview": "ts-node scripts/preview.ts",
+    "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.tsx,.jsx,.vue",
+    "lint:fix": "eslint . --ext .js,.cjs,.mjs,.ts,.tsx,.jsx,.vue --fix",
+    "format": "prettier --write",
+    "format:check": "prettier --check",
+    "format:all": "prettier --write .",
+    "format:check:all": "prettier --check .",
+    "archive": "ts-node scripts/archive.ts",
+    "create:app": "ts-node scripts/create-app.ts",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/eslint-parser": "^7.28.4",
+    "@babel/preset-react": "^7.27.1",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/archiver": "^6.0.3",
+    "@types/node": "^24.8.1",
+    "@types/yauzl": "^2.10.3",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/compiler-sfc": "^3.5.22",
+    "@vue/tsconfig": "^0.8.1",
+    "archiver": "^7.0.1",
+    "eslint": "^9.38.0",
+    "eslint-config-alloy": "^5.1.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "inquirer": "^12.10.0",
+    "lint-staged": "^16.2.4",
+    "prettier": "^3.6.2",
+    "prettier-plugin-multiline-arrays": "^4.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3",
+    "vite": "npm:rolldown-vite@7.1.14",
+    "vite-plugin-html": "^3.2.2",
+    "vue-eslint-parser": "^9.4.3",
+    "vue-tsc": "^3.1.1",
+    "yauzl": "^3.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@7.1.14"
+    }
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "vue": "^3.5.22"
+  }
+}

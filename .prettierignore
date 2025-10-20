@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+
+# Build outputs
+/dist
+/dist-ssr
+/dist/**
+coverage
+
+# Editor & misc
+.vscode
+.idea
+*.log
+*.tmp
+
+# Generated
+pnpm-lock.yaml
