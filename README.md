@@ -42,18 +42,17 @@
 - 模板来源：`scripts/templates/*.zip`
 - 生成模板：`pnpm archive <app-name> [zip-name]`（自动依据 `.gitignore` 排除文件）
 
-## 应用配置
+## 应用级 Vite 配置合并
 
-- 每个应用需包含 `apps/<app-name>/package.json`，可扩展：
-  - `htmlData`：注入到 `index.html`（例如设置 `<title>`）
-  - `viteConfig`：按需覆盖/扩展基础 Vite 配置
+- 每个应用可在 `apps/<app-name>/vite.config.ts` 中扩展或覆盖配置。
+- 根配置会在启动/构建时自动检测该文件，并使用 `mergeConfig` 与基础配置合并；
+- 可在 `apps/<app-name>/package.json` 中配置 `htmlData`，注入到 `index.html`。
 - 示例：
 
 ```json
 {
   "name": "my-app",
-  "htmlData": { "title": "My App" },
-  "viteConfig": { "server": { "port": 5173 } }
+  "htmlData": { "title": "My App" }
 }
 ```
 

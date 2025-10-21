@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
+import { defineConfig, mergeConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import vue from '@vitejs/plugin-vue';
 import react from '@vitejs/plugin-react';
@@ -20,7 +20,7 @@ if (!existsSync(pkgPath)) {
 
 const pkgInfo = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 
-export default defineConfig({
+let viteConfig = defineConfig({
   root: fileURLToPath(new URL('.', import.meta.url)),
   publicDir: `apps/${appName}/public`,
   envDir: `apps/${appName}`,
@@ -47,5 +47,12 @@ export default defineConfig({
       '@shared': fileURLToPath(new URL('shared', import.meta.url)),
     },
   },
-  ...(pkgInfo.viteConfig || {}),
 });
+
+const appViteConfigPath = fileURLToPath(new URL(`apps/${appName}/vite.config.ts`, import.meta.url));
+if (existsSync(appViteConfigPath)) {
+  const appViteConfig = (await import(appViteConfigPath)).default;
+  viteConfig = mergeConfig(viteConfig, appViteConfig);
+}
+
+export default viteConfig;

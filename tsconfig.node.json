@@ -28,6 +28,7 @@
   },
   "include": [
     "scripts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "apps/**/vite.config.ts"
   ]
 }
