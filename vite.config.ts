@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { defineConfig, mergeConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import vue from '@vitejs/plugin-vue';
@@ -39,7 +39,7 @@ let viteConfig = defineConfig({
     }),
   ],
   build: {
-    outDir: `dist/${appName}`,
+    outDir: `apps/${appName}/dist`,
   },
   resolve: {
     alias: {
@@ -51,7 +51,7 @@ let viteConfig = defineConfig({
 
 const appViteConfigPath = fileURLToPath(new URL(`apps/${appName}/vite.config.ts`, import.meta.url));
 if (existsSync(appViteConfigPath)) {
-  const appViteConfig = (await import(appViteConfigPath)).default;
+  const appViteConfig = (await import(pathToFileURL(appViteConfigPath).href)).default;
   viteConfig = mergeConfig(viteConfig, appViteConfig);
 }
 
